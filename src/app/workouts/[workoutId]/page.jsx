@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import AddButton from '@/app/components/addButton';
+import SavedButton from '@/app/components/savedButton';
 // const getData = async () => {
 //     const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${workoutId}`);
 //     const data = await res.json();
@@ -80,8 +82,8 @@ const WorkoutDetails = async({ params }) => {
           </ol>
              </div>
     <div className="card-actions justify-start gap-4">
-      <button className="btn bg-[#C2F800] text-black p-5 rounded-xl">Add to today's plan</button>
-      <button className="btn border-1 border-gray-500 p-5 rounded-xl">Save for later</button>
+      <AddButton workout={data}></AddButton>
+      <SavedButton workout={data}></SavedButton>
     </div>
   </div>
 </div>

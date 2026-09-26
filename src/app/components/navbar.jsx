@@ -1,12 +1,13 @@
 "use client"
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '@/app/image/logo.png';
 import { usePathname } from 'next/navigation';
+import { WorkoutContext } from '../context/workoutContext';
 
 const Navbar = () => {
-
+const { addWorkout, saveWorkout } = useContext(WorkoutContext);
     const userPath = usePathname();
     userPath === '/workouts' ? {className: "text-[#C2F800] bg-[#1A2312]"}: '';
     const link = <>
@@ -38,8 +39,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Plan</a>
-    <a className="btn">Saved</a>
+    <a className="btn">Plan <span className='border-1 rounded-4xl px-2 text-black bg-[#CCFF00]'>{addWorkout.length}</span></a>
+    <a className="btn">Saved <span className='border-1 rounded-4xl px-2 border-gray-700'>{saveWorkout.length}</span></a>
   </div>
 </div>
     );
