@@ -9,7 +9,7 @@ import SavedButton from '@/app/components/savedButton';
 // }
 const WorkoutDetails = async({ params }) => {
     const { workoutId } = await params;
-    const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${workoutId}`);
+    const res = await fetch(`https://api.api-store.workers.dev/api/fitlog/${workoutId}`);
     const data = await res.json();
      const { image, sets, reps,instructions, equipment,difficulty, duration, caloriesBurned,rating,muscleGroups,name,description} = data
     return (

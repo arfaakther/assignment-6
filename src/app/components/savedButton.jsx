@@ -1,13 +1,21 @@
 'use client'
 import React, { useContext } from 'react';
 import { WorkoutContext } from '../context/workoutContext';
+import { toast } from 'react-toastify';
 const SavedButton = ({workout}) => {
     const {saveWorkout, setsaveWorkout} = useContext(WorkoutContext);
         
     const handleSaveworkout = () => {
+        const newWorkoutArray = saveWorkout.filter(
+    (item) => item.id === workout.id
+  );
+        if (newWorkoutArray.includes(workout)) {
+              toast.error("Already Saved!");
+            }
+            else {
             setsaveWorkout([...saveWorkout, workout])
-        alert('save added')
-        console.log('button clicked');
+            toast.success(" Workout Saved!");
+        }
         }
         
     

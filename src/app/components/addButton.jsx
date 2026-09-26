@@ -1,12 +1,21 @@
 'use client'
 import React, { useContext } from 'react';
 import { WorkoutContext } from '../context/workoutContext';
+import { toast } from 'react-toastify';
 
 const AddButton = ({workout}) => {
     const {addWorkout, setaddWorkout} = useContext(WorkoutContext);
     const handleAddworkout = () => {
-        setaddWorkout([...addWorkout, workout])
-        alert('added')
+              const newWorkoutArrayy = addWorkout.filter(
+    (item) => item.id === workout.id
+  );
+        if (newWorkoutArrayy.includes(workout)) {
+              toast.error("Already Added!");
+            }
+            else {
+            setaddWorkout([...addWorkout, workout]);
+              toast.success("Added to the Plan!");
+        }
     }
     
 return (

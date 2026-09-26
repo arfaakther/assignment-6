@@ -39,8 +39,8 @@ const { addWorkout, saveWorkout } = useContext(WorkoutContext);
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Plan <span className='border-1 rounded-4xl px-2 text-black bg-[#CCFF00]'>{addWorkout.length}</span></a>
-    <a className="btn">Saved <span className='border-1 rounded-4xl px-2 border-gray-700'>{saveWorkout.length}</span></a>
+    <Link href="/my-plan" className="btn">Plan <span className='border-1 rounded-4xl px-2 text-black bg-[#CCFF00]'>{addWorkout.length}</span></Link>
+    <Link href="/my-plan" className="btn">Saved <span className='border-1 rounded-4xl px-2 border-gray-700'>{saveWorkout.length}</span></Link>
   </div>
 </div>
     );

@@ -1,12 +1,29 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { WorkoutContext } from "../context/workoutContext";
 import Image from "next/image";
 import Link from "next/link";
-// import WorkoutCard from '../components/workoutCard';
+
+
 
 const MyPlanPage = () => {
-  const { addWorkout, saveWorkout } = useContext(WorkoutContext);
+  const { addWorkout,saveWorkout,setaddWorkout,setsaveWorkout} = useContext(WorkoutContext);
+  const [activeTab, setActiveTab] = useState("plan");
+  const handleDeletePlan = (id) => {
+     console.log("Deleting:", id);
+  console.log("Current workouts:", addWorkout);
+  setaddWorkout(
+    addWorkout.filter((workout) => workout.id !== id)
+  );
+};
+
+const handleDeleteSaved = (id) => {
+  setsaveWorkout(
+    saveWorkout.filter((workout) => workout.id !== id)
+  );
+};
+  const currentWorkouts =
+  activeTab === "plan" ? addWorkout : saveWorkout;
   return (
     <div className="container mx-auto bg-base-100 shadow-sm p-8 ">
       <div>
@@ -17,52 +34,23 @@ const MyPlanPage = () => {
         <div className="grid grid-cols-3 gap 6 text-center py-8">
           <div>
             <p>Exercises</p>
-            <h1>{addWorkout.length}</h1>
+            <h1>{currentWorkouts.length}</h1>
           </div>
           <div className="border-x-1 border-gray-700">
             <p>Minutes</p>
-            <h1>{addWorkout.reduce(
+            <h1>{currentWorkouts.reduce(
     (total, workout) => total + workout.duration,
     0)}</h1>
           </div>
           <div>
             <p>Calories</p>
-            <h1>{addWorkout.reduce(
+            <h1>{currentWorkouts.reduce(
     (total, workout) => total + workout.caloriesBurned,
     0)}
     </h1>
           </div>
         </div>
           </div>
-          
-        <div className="border-1 border-gray-700 my-5 h-[125px] rounded-2xl">
-  <div className="grid grid-cols-3 gap-6 text-center py-8">
-    <div>
-      <p>Exercises</p>
-      <h1>{saveWorkout.length}</h1>
-    </div>
-
-    <div className="border-x-1 border-gray-700">
-      <p>Minutes</p>
-      <h1>
-        {saveWorkout.reduce(
-          (total, workout) => total + workout.duration,
-          0
-        )}
-      </h1>
-    </div>
-
-    <div>
-      <p>Calories</p>
-      <h1>
-        {saveWorkout.reduce(
-          (total, workout) => total + workout.caloriesBurned,
-          0
-        )}
-      </h1>
-    </div>
-  </div>
-</div>
 
       {/* name of each tab group should be unique */}
       <div className="tabs tabs-box">
@@ -70,8 +58,9 @@ const MyPlanPage = () => {
           type="radio"
           name="my_tabs_6"
           className="tab"
-        aria-label="Today’s Plan"
-        defaultChecked
+          aria-label="Today’s Plan"
+          defaultChecked
+          onChange={() => setActiveTab("plan")}
         />
         <div className="tab-content bg-base-100 border-base-300 p-6">
           {addWorkout.length > 0 ? (
@@ -115,7 +104,7 @@ const MyPlanPage = () => {
                       <button className="btn border-1 mx-4 rounded-2xl bg-[#C2F800] text-black">
                         Mark as Done
                       </button>
-                      <button className="mr-4">X</button>{" "}
+                      <button onClick={() => handleDeletePlan(workout.id)} className="mr-4">X</button>{" "}
                     </div>
                   </li>
                 </ul>
@@ -137,6 +126,7 @@ const MyPlanPage = () => {
           name="my_tabs_6"
           className="tab"
           aria-label="Saved"
+           onChange={() => setActiveTab("saved")}
           
         />
         <div className="tab-content bg-base-100 border-base-300 p-6">
@@ -178,7 +168,7 @@ const MyPlanPage = () => {
                           View Details
                         </button>
                       </Link>
-                      <button className="mx-5">X</button>{" "}
+                      <button onClick={() => handleDeleteSaved(workout.id)} className="mx-5">X</button>
                     </div>
                   </li>
                 </ul>
