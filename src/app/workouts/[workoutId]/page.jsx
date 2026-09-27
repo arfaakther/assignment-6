@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import AddButton from '@/app/components/addButton';
 import SavedButton from '@/app/components/savedButton';
+import { notFound } from 'next/navigation';
 // const getData = async () => {
 //     const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${workoutId}`);
 //     const data = await res.json();
@@ -10,9 +11,14 @@ import SavedButton from '@/app/components/savedButton';
 const WorkoutDetails = async({ params }) => {
     const { workoutId } = await params;
     const res = await fetch(`https://api.api-store.workers.dev/api/fitlog/${workoutId}`);
-    const data = await res.json();
+  const data = await res.json();
+  
+ if (!res.ok) {
+   notFound();
+}
      const { image, sets, reps,instructions, equipment,difficulty, duration, caloriesBurned,rating,muscleGroups,name,description} = data
-    return (
+    
+  return (
         <div className="card lg:card-side rounded-none bg-base-100 shadow-sm container mx-auto p-10">
   <figure className=' rounded-2xl'>
     <Image src={image} alt="workout image" width={500} height={100}></Image>

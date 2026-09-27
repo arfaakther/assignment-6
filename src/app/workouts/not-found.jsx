@@ -2,7 +2,7 @@ import Link from "next/link";
 
  const NotFound = () => {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-base-100 px-6">
+    <main className="min-h-screen flex items-center justify-center bg-base-100 px-6 container mx-auto">
       <div className="text-center max-w-lg">
 
 
@@ -11,7 +11,7 @@ import Link from "next/link";
         </h1>
 
         
-        <h2 className="text-3xl md:text-4xl font-bold mt-4">
+        <h2 className="text-3xl md:text-4xl font-bold mt-4 text-[#C2F800]">
           WORKOUT NOT FOUND
         </h2>
 

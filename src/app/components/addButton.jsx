@@ -19,7 +19,7 @@ const AddButton = ({workout}) => {
     }
     
 return (
-        <button onClick={()=> handleAddworkout()} className="btn bg-[#C2F800] text-black p-5 rounded-xl">Add to today's plan</button>
+        <button onClick={()=> handleAddworkout()} className="btn bg-[#C2F800] text-black p-5 rounded-xl"><span>📋</span> Add to today's plan</button>
     );
 };
 

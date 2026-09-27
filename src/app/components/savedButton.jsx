@@ -20,7 +20,7 @@ const SavedButton = ({workout}) => {
         
     
     return (
-        <button onClick={() => handleSaveworkout()} className="btn border-1 border-gray-500 p-5 rounded-xl">Save for later</button>
+        <button onClick={() => handleSaveworkout()} className="btn border-1 border-gray-500 p-5 rounded-xl"><span>☆</span> Save for later</button>
    
         );
 };

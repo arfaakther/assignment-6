@@ -4,13 +4,14 @@ export const WorkoutContext = createContext({});
 const WorkoutProvider = ({children}) => {
     const [addWorkout, setaddWorkout] = useState([]);
     const [saveWorkout, setsaveWorkout] = useState([]);
+    
      
 const addValue = {
         addWorkout,
         setaddWorkout,
         saveWorkout,
-        setsaveWorkout
-        }
+    setsaveWorkout,
+    }
     return (
         <WorkoutContext.Provider value={addValue}>
             {children}

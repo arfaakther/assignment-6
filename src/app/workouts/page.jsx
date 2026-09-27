@@ -12,7 +12,8 @@ const getData = async () => {
 const WorkoutPage = async () => {
     const workoutData = await getData();
     return (
-        <div className='container mx-auto my-18'>
+        <div className=' container mx-auto'>
+        <div className='my-18 p-6'>
             <BannerPage></BannerPage>
             <div id='library' className='my-10'>
                 <h1 className='text-3xl font-semibold'>THE LIBRARY</h1>
@@ -28,7 +29,8 @@ const WorkoutPage = async () => {
             </div>
                 
 
-        </div>
+            </div>
+            </div>
     );
 };
 

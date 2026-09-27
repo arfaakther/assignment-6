@@ -15,8 +15,9 @@ const MyPlanPage = () => {
     addWorkout.filter((workout) => workout.id !== id)
     );
     toast.error('Workout Removed');
-};
-
+  };
+  
+ 
 const handleDeleteSaved = (id) => {
   setsaveWorkout(
     saveWorkout.filter((workout) => workout.id !== id)
@@ -103,7 +104,7 @@ const handleDeleteSaved = (id) => {
                         </button>
                       </Link>
                       <button className="btn border-1 mx-4 rounded-2xl bg-[#C2F800] text-black">
-                        Mark as Done
+                        <span>✓</span> Mark as Done
                       </button>
                       <button onClick={() => handleDeletePlan(workout.id)} className="mr-4">X</button>{" "}
                     </div>
@@ -179,9 +180,9 @@ const handleDeleteSaved = (id) => {
             <div className="border-1 border-dashed border-gray-700 my-10 h-[300px] rounded-2xl content-center text-center">
               <h1 className="text-xl font-semibold">NOTHING HERE YET</h1>
               <p>Browse the library and add a lift to get today moving.</p>
-              <button className=" btn bg-[#C2F800] text-black m-4 px-5 rounded-2xl text-[12px] font-bold">
+              <Link href="/workouts"><button className=" btn bg-[#C2F800] text-black m-4 px-5 rounded-2xl text-[12px] font-bold">
                 Go to workouts
-              </button>
+              </button></Link>
             </div>
           )}
         </div>
