@@ -14,7 +14,7 @@ const AddButton = ({workout}) => {
             }
             else {
             setaddWorkout([...addWorkout, workout]);
-              toast.success("Added to the Plan!");
+              toast.success("Added to today's Plan!");
         }
     }
     

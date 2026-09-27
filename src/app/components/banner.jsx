@@ -13,7 +13,7 @@ const BannerPage = () => {
       <p className="py-6">
        FitLog is a dark, no-nonsense gym companion: pick a lift, lock it<br/>into today's plan, and watch the week's work add up.
       </p>
-      <button className="btn bg-[#C2F800] text-black rounded-[6px] text-[12px] font-bold">BROWSE WORKOUTS</button>
+      <a href='#library' className="btn bg-[#C2F800] text-black rounded-[6px] text-[12px] font-bold">BROWSE WORKOUTS</a>
     </div>
   </div>
 </div>

@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { WorkoutContext } from "../context/workoutContext";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 
 
@@ -10,17 +11,17 @@ const MyPlanPage = () => {
   const { addWorkout,saveWorkout,setaddWorkout,setsaveWorkout} = useContext(WorkoutContext);
   const [activeTab, setActiveTab] = useState("plan");
   const handleDeletePlan = (id) => {
-     console.log("Deleting:", id);
-  console.log("Current workouts:", addWorkout);
   setaddWorkout(
     addWorkout.filter((workout) => workout.id !== id)
-  );
+    );
+    toast.error('Workout Removed');
 };
 
 const handleDeleteSaved = (id) => {
   setsaveWorkout(
     saveWorkout.filter((workout) => workout.id !== id)
   );
+  toast.error('Workout Removed')
 };
   const currentWorkouts =
   activeTab === "plan" ? addWorkout : saveWorkout;
@@ -114,9 +115,9 @@ const handleDeleteSaved = (id) => {
             <div className="border-1 border-dashed border-gray-700 my-10 h-[300px] rounded-2xl content-center text-center">
               <h1 className="text-xl font-semibold">NOTHING HERE YET</h1>
               <p>Browse the library and add a lift to get today moving.</p>
-              <button className=" btn bg-[#C2F800] text-black m-4 px-5 rounded-2xl text-[12px] font-bold">
+              <Link href="/workouts"><button className=" btn bg-[#C2F800] text-black m-4 px-5 rounded-2xl text-[12px] font-bold">
                 Go to workouts
-              </button>
+              </button></Link>
             </div>
           )}
         </div>
