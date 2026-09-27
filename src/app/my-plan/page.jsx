@@ -28,25 +28,25 @@ const handleDeleteSaved = (id) => {
   activeTab === "plan" ? addWorkout : saveWorkout;
   return (
     <div className="container mx-auto bg-base-100 shadow-sm p-8 ">
-      <div>
-        <h1>MY PLAN</h1>
+      <div className="my-5">
+        <h1 className="text-3xl font-bold">MY PLAN</h1>
         <p>Cap of five lifts for today. Finish them, then load more.</p>
       </div>
-      <div className="border-1 border-gray-700 my-5 h-[125px] rounded-2xl">
-        <div className="grid grid-cols-3 gap 6 text-center py-8">
+      <div className="border-1 border-gray-700 my-7 h-[125px] rounded-2xl">
+        <div className="grid grid-cols-3 gap 6 p-8">
           <div>
-            <p>Exercises</p>
-            <h1>{currentWorkouts.length}</h1>
+            <p className="">Exercises</p>
+            <h1 className="text-3xl font-bold">{currentWorkouts.length}</h1>
           </div>
-          <div className="border-x-1 border-gray-700">
+          <div className="border-x-1 border-gray-700 pl-8">
             <p>Minutes</p>
-            <h1>{currentWorkouts.reduce(
+            <h1 className="text-3xl font-bold">{currentWorkouts.reduce(
     (total, workout) => total + workout.duration,
     0)}</h1>
           </div>
-          <div>
+          <div className="pl-8">
             <p>Calories</p>
-            <h1>{currentWorkouts.reduce(
+            <h1 className="text-3xl font-bold">{currentWorkouts.reduce(
     (total, workout) => total + workout.caloriesBurned,
     0)}
     </h1>
@@ -54,7 +54,7 @@ const handleDeleteSaved = (id) => {
         </div>
           </div>
 
-      {/* name of each tab group should be unique */}
+      
       <div className="tabs tabs-box">
         <input
           type="radio"
@@ -67,22 +67,22 @@ const handleDeleteSaved = (id) => {
         <div className="tab-content bg-base-100 border-base-300 p-6">
           {addWorkout.length > 0 ? (
             addWorkout.map((workout) => (
-              <div key={workout.id} className="m-4">
+              <div key={workout.id} className="m-2 sm:m-4">
                 <ul className="list bg-base-100 rounded-box shadow-md border border-gray-700">
-                  <li className="list-row">
+                  <li className="list-row flex flex-col md:flex-row gap-4 p-4">
                     <div>
                       <Image
-                        className="rounded-2xl"
+                        className="rounded-2xl w-full sm:w-[150px] h-[180px] sm:h-[150px] object-cover"
                         src={workout.image}
                         alt="workout image"
                         width={150}
                         height={20}
                       />
                     </div>
-                    <div className="content-center p-2">
+                    <div className="content-center p-2 flex-1 min-w-0">
                       <h1 className="card-title">{workout.name}</h1>
                       <p>{workout.equipment}</p>
-                      <div className="card-actions justify-start mt-1">
+                      <div className="card-actions justify-start mt-2 flex flex-wrap gap-3 text-sm">
                         <div>
                           <span className="">🕐</span>
                           {workout.duration} min
